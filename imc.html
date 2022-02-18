@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>IMC</title>
+</head>
+<body class="bg-dark text-light">
+  <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+    <h1 class="mb-5 ms-5"> calculatrice de IMC</h1>
+      <div>
+        <label for="poids">Poids</label>
+        <input class="" type="number" name="poids" id="poids">
+      </div>
+       
+    
+    <br>
+    <br>
+    <div>
+        <label for="taille">Taille</label>
+        <input class="ms-1"  type="text" name="taille" id="taille">
+    </div>
+    
+    
+    <br>
+    <br>
+    
+    <button class="btn btn-primary ms-3 " onclick="Calcule()">Calculer</button>
+    <br>
+    <br>
+    
+    <p class="  text-dark ms-4 px-3" id="imc"> IMC </p>  
+      
+    <p class="  text-dark ms-4 px-3" id="Indice">Indice</p>  
+  </div>  
+
+
+    <script>
+function Calcule(){
+
+    let poids =parseInt( document.getElementById('poids').value);
+
+    let taille = parseFloat( document.getElementById('taille').value);
+
+
+    let imc = document.getElementById('imc');
+    
+   let result =Math.round( poids / (Math.pow(taille,2)));
+    imc.innerHTML = result
+
+    let Indice =document.getElementById('Indice');
+
+    if( result< 18.5){
+        Indice.innerHTML = " le IMC indique que le poids est insuffisant "
+    }
+    else if(result >=18.5 && result <25) {
+        Indice.innerHTML = "  IMC  normal "
+
+    }
+    else if(result >=25 && result <30) {
+        Indice.innerHTML = " IMC surpoids "
+
+    }
+    else if(result >=30 && result <35) {
+        Indice.innerHTML = " IMC obèse "
+
+    }
+    imc.classList.remove('text-dark');
+    imc.classList.add('text-light');
+    Indice.classList.remove('text-dark');
+    Indice.classList.add('text-light');
+
+}
+
+    </script>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
